@@ -1,16 +1,19 @@
-package com.acciojob.Hospital.Management.System;
+package com.acciojob.Hospital.Management.System.Services;
 
+import com.acciojob.Hospital.Management.System.Models.Doctor;
+import com.acciojob.Hospital.Management.System.Repository.DoctorRepositoryLayer;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@Slf4j
 @Service // this will tell spring this is service layer and logic is written  here
 
-public class ServiceLayer {
+public class DoctorServiceLayer {
     @Autowired
-    private RepositoryLayer RepoObj;
+    private DoctorRepositoryLayer RepoObj;
 
     public String addDoctor(Doctor doctor){
 
@@ -27,6 +30,7 @@ public class ServiceLayer {
         String docName = "";
         for(Doctor doctor : doctorList){
             if(doctor.getExperience()==exp){
+                log.info("We are comparing level and experience");
                 if(doctor.getName().compareTo(docName)<0){
                     docName = doctor.getName();
                 }
